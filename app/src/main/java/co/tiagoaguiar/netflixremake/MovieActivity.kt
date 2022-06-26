@@ -1,8 +1,11 @@
 package co.tiagoaguiar.netflixremake
 
+import android.graphics.drawable.LayerDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 
 class MovieActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,5 +17,18 @@ class MovieActivity : AppCompatActivity() {
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // busqyeu o desenhavel (layer-list)
+        val layerDrawble: LayerDrawable = ContextCompat.getDrawable(this, R.drawable.shadows) as LayerDrawable
+
+        // busqyeu o filme que eu quero
+        val movieCover = ContextCompat.getDrawable(this, R.drawable.movie_4)
+
+        // atribui a esse layer-list o novo filme
+        layerDrawble.setDrawableByLayerId(R.id.cover_drawable, movieCover)
+
+        // set no imageview
+        val coverImg: ImageView = findViewById(R.id.movie_img)
+        coverImg.setImageDrawable(layerDrawble)
     }
 }
