@@ -21,9 +21,10 @@ class MainActivity : AppCompatActivity() {
             movies.add(movie)
         }
 
+        //Rolagem das tela na horizontal
         val adapter = MainAdapter(movies)
         val rv: RecyclerView = findViewById(R.id.rv_main)
-        rv.layoutManager = LinearLayoutManager(this)
+        rv.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         rv.adapter = adapter
     }
 }
